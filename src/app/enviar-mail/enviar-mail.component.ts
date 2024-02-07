@@ -9,13 +9,14 @@ import { ServicioClienteService } from '../servicio-cliente.service';
 })
 export class EnviarMailComponent {
   constructor(private httpCliente: ServicioClienteService) {}
+  usuario: string = 'Mauro';
   enviar() {
+    this.mail.origen=this.usuario;
     this.httpCliente.escribirMensaje(this.mail).subscribe(()=>{
       alert("Mensaje Enviado");
-      this.mail=new Correo(0, '', '', '','', '', 0);
+      this.mail=new Correo(0, this.usuario, '', '','', new Date().toString(), 0);
     });
   }
-  usuario: string = 'Mauro';
   mail: Correo = {
     id: 0,
     origen: this.usuario,
