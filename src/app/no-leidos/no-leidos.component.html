@@ -38,7 +38,7 @@
     </ng-container>
     <ng-container matColumnDef="leido">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Leido </th>
-      <td mat-cell *matCellDef="let row"> {{row.leido}} </td>
+      <td mat-cell *matCellDef="let row"><button mat-raised-button color="warn" (click)="leerMensaje(row)">Leer</button>  </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>

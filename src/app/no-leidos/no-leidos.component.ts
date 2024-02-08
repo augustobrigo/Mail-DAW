@@ -6,28 +6,35 @@ import { Correo } from '../correo';
 import { ServicioClienteService } from '../servicio-cliente.service';
 
 @Component({
-  selector: 'app-recibir-mail',
-  templateUrl: './recibir-mail.component.html',
-  styleUrls: ['./recibir-mail.component.css'],
+  selector: 'app-no-leidos',
+  templateUrl: './no-leidos.component.html',
+  styleUrls: ['./no-leidos.component.css']
 })
-export class RecibirMailComponent implements OnInit {
+export class NoLeidosComponent implements OnInit{
 
   constructor(private httpCliente:ServicioClienteService){}
-
   ngOnInit(): void {
-    this.listarMail();
+    this.mostrarNoLeidos();
   }
   dataSource=new MatTableDataSource<Correo>();
   columnas:string[]=['id', 'origen', 'destinatario','mensaje','asunto','fecha','leido'];
   nombreUs:string='Mauro';
-  listarMail(){
-    this.httpCliente.mostrarTodosMensajes(this.nombreUs).subscribe((x)=>{
-      console.log("");
+
+  mostrarNoLeidos(){
+    this.httpCliente.mostrarMensajesNoLeidos(this.nombreUs).subscribe((x)=>{
+      console.log("No leidos mostrándose!!!");
       this.dataSource.data=x;
       this.dataSource.sort=this.sort;
       this.dataSource.paginator=this.paginator;
     })
   }
+  leerMensaje(mail:Correo) {
+      this.httpCliente.leerMensajes(mail).subscribe((x)=>{
+        console.log(mail);
+        this.dataSource.sort=this.sort;
+        this.dataSource.paginator=this.paginator;
+      })
+    }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

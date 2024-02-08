@@ -15,10 +15,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NoLeidosComponent } from './no-leidos/no-leidos.component';
+import { EnviadosComponent } from './enviados/enviados.component';
 
 
 
@@ -27,7 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     EnviarMailComponent,
     RecibirMailComponent,
-    GmailComponent
+    GmailComponent,
+    NoLeidosComponent,
+    EnviadosComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatDividerModule,
     HttpClientModule,
+    MatTableModule,
+     MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,12 +6,11 @@ import { Correo } from '../correo';
 import { ServicioClienteService } from '../servicio-cliente.service';
 
 @Component({
-  selector: 'app-recibir-mail',
-  templateUrl: './recibir-mail.component.html',
-  styleUrls: ['./recibir-mail.component.css'],
+  selector: 'app-enviados',
+  templateUrl: './enviados.component.html',
+  styleUrls: ['./enviados.component.css']
 })
-export class RecibirMailComponent implements OnInit {
-
+export class EnviadosComponent implements OnInit {
   constructor(private httpCliente:ServicioClienteService){}
 
   ngOnInit(): void {
@@ -21,8 +20,8 @@ export class RecibirMailComponent implements OnInit {
   columnas:string[]=['id', 'origen', 'destinatario','mensaje','asunto','fecha','leido'];
   nombreUs:string='Mauro';
   listarMail(){
-    this.httpCliente.mostrarTodosMensajes(this.nombreUs).subscribe((x)=>{
-      console.log("");
+    this.httpCliente.mostrarMensajesEnviados(this.nombreUs).subscribe((x)=>{
+      console.log("Mensajes Enviados!!!");
       this.dataSource.data=x;
       this.dataSource.sort=this.sort;
       this.dataSource.paginator=this.paginator;

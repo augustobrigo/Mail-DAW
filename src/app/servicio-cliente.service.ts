@@ -27,8 +27,8 @@ export class ServicioClienteService {
     return this.httpCliente.post('http://moralo.atwebpages.com/serviciosMail/MandarMensajeMail.php',email,{responseType: 'text'})
   }
 
-  leerMensajes(id:number){
-    this.httpCliente.post('http://moralo.atwebpages.com/serviciosMail/LeerMensaje.php?id=',id)
+  leerMensajes(email:Correo){
+    return this.httpCliente.post('http://moralo.atwebpages.com/serviciosMail/LeerMensaje.php',email,{responseType: 'text'})
   }
 
 }
