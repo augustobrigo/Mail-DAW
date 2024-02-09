@@ -4,6 +4,7 @@
 <div class="contenedor">
 
   <mat-label>USUARIO: {{usuario}}</mat-label>
+  <input (keydown.enter)="buscarUsuario()" matInput [(ngModel)]="password">
   <mat-divider></mat-divider>
   <mat-form-field>
     <mat-label>Nombre Destinatario</mat-label>

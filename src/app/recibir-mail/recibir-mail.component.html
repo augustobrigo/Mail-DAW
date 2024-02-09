@@ -43,6 +43,10 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Leido </th>
       <td mat-cell *matCellDef="let row"> {{row.leido}} </td>
     </ng-container>
+    <ng-container matColumnDef="borrar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Borrar </th>
+      <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="borrarMensaje(row)">Borrar</button></td>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>
     <tr mat-row *matRowDef="let row; columns: columnas;"></tr>

@@ -18,7 +18,7 @@ export class RecibirMailComponent implements OnInit {
     this.listarMail();
   }
   dataSource=new MatTableDataSource<Correo>();
-  columnas:string[]=['id', 'origen', 'destinatario','mensaje','asunto','fecha','leido'];
+  columnas:string[]=['id', 'origen', 'destinatario','mensaje','asunto','fecha','leido', 'borrar'];
   nombreUs:string='Mauro';
   listarMail(){
     this.httpCliente.mostrarTodosMensajes(this.nombreUs).subscribe((x)=>{
@@ -27,6 +27,12 @@ export class RecibirMailComponent implements OnInit {
       this.dataSource.sort=this.sort;
       this.dataSource.paginator=this.paginator;
     })
+  }
+
+  borrarMensaje(mensaje: Correo){
+this.httpCliente.borrarMensaje(mensaje).subscribe(()=>{
+  this.listarMail();
+})
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
